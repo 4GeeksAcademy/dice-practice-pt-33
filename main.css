@@ -1,0 +1,62 @@
+
+* {
+    font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+body {
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -10;
+}
+
+/* h1 {
+    font-size: 152px !important;
+    color: white;
+} */
+
+
+@media screen and (max-width: 768px) {
+    /* Tamaño de texto en dispositivos móviles */
+    h1 {
+      font-size: 64px;
+    }
+}
+  
+@media screen and (min-width: 768px) {
+    /* Tamaño de texto en dispositivos de escritorio */
+    h1 {
+      font-size: 128px;
+    }
+}
+
+button {
+    all: unset;
+    margin:  10px;
+    background-color: purple;
+    border-radius: 8px;
+    padding: 5px;
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(158, 3, 158);
+}
+
+.hero-group {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
