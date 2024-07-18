@@ -1,6 +1,8 @@
-# HTML Hello
+# HTML Hello - Construyendo un dado con el DOM
 
-El boilerplate más básico para cualquier estudiante de 4Geeks Academy, empieza tu primer sitio web desde cero.
+En este ejercicio construimos un dado con el DOM y los metodos createElement, appendChild, ademas de las propiedades de estilo y la sentencia switch.
+
+![dice](./assets/chrome-capture-dice-2024-7-18.gif)
 
 > Tienes un video tutorial sobre [cómo usar esta plantilla para crear tu primer sitio web aquí](https://youtu.be/dfbDCMu_p-0).
 
