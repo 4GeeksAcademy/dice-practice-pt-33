@@ -20,21 +20,21 @@
 
     <script>
 
-        const resultOne = [ 0, 0, 0, 0, 1, 0, 0, 0, 0 ]
-        const resultTwo = [ 1, 0, 0, 0, 0, 0, 0, 0, 1 ]
+        const resultOne = [ ['row-2', 'col-2'] ]
+        const resultTwo = [ ['row-1', 'col-1'], ['row-3', 'col-3'] ]
+        const resultThree = [ ['row-1','col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'] ]
+        const resultFour = [ ['row-1', 'col-1'], ['row-1', 'col-3'], ['row-3', 'col-1'], ['row-3', 'col-3'] ]
+        const resultFive = [ ['row-1', 'col-1'], ['row-1', 'col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'], ['row-3', 'col-3'] ]
+        const resultSix = [ ['row-1', 'col-1'], ['row-1', 'col-3'], ['row-2', 'col-1'], ['row-2', 'col-3'], ['row-3', 'col-1'], ['row-3', 'col-3'] ]
 
-        // const resultThree = [0, 0, 1, 0, 1, 0, 1, 0, 0]
-        //  const resultThree = [ ['row-1','col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'] ]
-
-
-        const DICE_SIDES = 3;
+        const DICE_SIDES = 6;
         const DICE_SIZE = '100px'
         const DOT_SIZE = '12px'
 
         let diceSide = document.querySelector("#side");
 
         let randomNumber = () => Math.floor(Math.random()*DICE_SIDES) + 1;
-        let diceResult = 3;
+        let diceResult = randomNumber();
         
         for(let i = 1; i <= 3; i++){
             let newRow = document.createElement("div");
@@ -47,11 +47,8 @@
 
                 newCol.style.width = DOT_SIZE;
                 newCol.style.height = DOT_SIZE;
-
-                newCol.style.border = '1px solid black';
-
-
-                newCol.innerText = `${i} ${j}`;
+                newCol.style.margin = '2px';
+                newCol.classList = 'd-flex flex-column'
 
                 newRow.appendChild(newCol);
                 
@@ -59,21 +56,39 @@
             diceSide.appendChild(newRow);
         }
 
-        const resultThree = [ ['row-1','col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'] ]
+        let resultPoints = [];
 
-        resultThree.forEach(coordenate => {
-            let position = document.querySelector("#" + coordenate[0] + '#' + coordenate[1])
-            position.appendChild()
+        switch(diceResult){
+            case 1:
+                resultPoints = resultOne;
+                break;
+            case 2:
+                resultPoints = resultTwo;
+                break;
+            case 3:
+                resultPoints = resultThree;
+                break;
+            case 4:
+                resultPoints = resultFour;
+                break;
+            case 5:
+                resultPoints = resultFive;
+                break;
+            case 6:
+                resultPoints = resultSix;
+                break;
+        }
 
+        resultPoints.forEach(coordenate => {
+            let position = document.querySelector("#" + coordenate[0] + ' #' + coordenate[1])
             let dotElement = document.createElement("span");
 
-            // darle estio a ese elemento
             dotElement.style.width = DOT_SIZE;
             dotElement.style.height = DOT_SIZE;
             dotElement.style.backgroundColor = 'black';
             dotElement.style.borderRadius = '50%'
 
-            diceSide.appendChild(dotElement);
+            position.appendChild(dotElement)
             
         })
 
