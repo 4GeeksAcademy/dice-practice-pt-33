@@ -8,22 +8,75 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body class="bg-success">
+
     <div id="app" class="row col-12 justify-content-center align-items-center">
-        <div id="side" class="bg-white text-center col-1 p-3">
-            6
+
+        <div id="side" class="bg-white text-center p-3
+            d-flex flex-column justify-content-center align-items-center
+        " style="height: 100px; width: 100px; font-size: 5px;">
         </div>
+
     </div>
 
     <script>
-        const DICE_SIDES = 6;
+
+        const resultOne = [ 0, 0, 0, 0, 1, 0, 0, 0, 0 ]
+        const resultTwo = [ 1, 0, 0, 0, 0, 0, 0, 0, 1 ]
+
+        // const resultThree = [0, 0, 1, 0, 1, 0, 1, 0, 0]
+        //  const resultThree = [ ['row-1','col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'] ]
+
+
+        const DICE_SIDES = 3;
+        const DICE_SIZE = '100px'
+        const DOT_SIZE = '12px'
 
         let diceSide = document.querySelector("#side");
 
         let randomNumber = () => Math.floor(Math.random()*DICE_SIDES) + 1;
-
-        diceSide.textContent = randomNumber();
+        let diceResult = 3;
         
+        for(let i = 1; i <= 3; i++){
+            let newRow = document.createElement("div");
+            newRow.id = `row-${i}`;
+            newRow.classList = 'd-flex';
 
-    </script>
+            for(let j = 1; j <= 3; j ++){
+                let newCol = document.createElement("div");
+                newCol.id = `col-${j}`;
+
+                newCol.style.width = DOT_SIZE;
+                newCol.style.height = DOT_SIZE;
+
+                newCol.style.border = '1px solid black';
+
+
+                newCol.innerText = `${i} ${j}`;
+
+                newRow.appendChild(newCol);
+                
+            }
+            diceSide.appendChild(newRow);
+        }
+
+        const resultThree = [ ['row-1','col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'] ]
+
+        resultThree.forEach(coordenate => {
+            let position = document.querySelector("#" + coordenate[0] + '#' + coordenate[1])
+            position.appendChild()
+
+            let dotElement = document.createElement("span");
+
+            // darle estio a ese elemento
+            dotElement.style.width = DOT_SIZE;
+            dotElement.style.height = DOT_SIZE;
+            dotElement.style.backgroundColor = 'black';
+            dotElement.style.borderRadius = '50%'
+
+            diceSide.appendChild(dotElement);
+            
+        })
+
+    </script>   
 </body>
 </html>
