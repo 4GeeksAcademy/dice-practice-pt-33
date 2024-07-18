@@ -1,6 +1,7 @@
-# HTML Hello
+# HTML Hello - Trowing a Dice with the DOM
+In this exercise, we built a dice using the DOM and the createElement, appendChild methods, as well as style properties and the switch statement.
 
-The most basic boilerplate for any 4Geeks Academy student, start your very first website from scratch.
+![dice](./assets/chrome-capture-dice-2024-7-18.gif)
 
 > There is a video tutorial on [how to use this template to create your very first website here](https://youtu.be/dfbDCMu_p-0).
 
