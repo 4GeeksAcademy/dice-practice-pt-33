@@ -20,50 +20,84 @@
 
     <script>
 
-        const resultOne = [ 0, 0, 0, 0, 1, 0, 0, 0, 0 ]
-        const resultTwo = [ 1, 0, 0, 0, 0, 0, 0, 0, 1 ]
+        const resultOne =   [ '#row-2 #col-2' ]
+        const resultTwo =   [ '#row-1 #col-1', '#row-3 #col-3']
+        const resultThree = [ '#row-1 #col-3', '#row-2 #col-2', '#row-3 #col-1' ]
+        const resultFour =  [ '#row-1 #col-1', '#row-1 #col-3' , '#row-3 #col-1' , '#row-3 #col-3' ]
+        const resultFive =  [ '#row-1 #col-3', '#row-2 #col-2', '#row-3 #col-1', '#row-1 #col-1', '#row-3 #col-3']
+        const resultSix =   [ '#row-1 #col-1', '#row-1 #col-3' , '#row-2 #col-1', '#row-2 #col-3' , '#row-3 #col-1' , '#row-3 #col-3' ]
 
-        // const resultThree = [0, 0, 1, 0, 1, 0, 1, 0, 0]
-        //  const resultThree = [ ['row-1','col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'] ]
 
-
-        const DICE_SIDES = 3;
+        const DICE_SIDES = 6;
         const DICE_SIZE = '100px'
         const DOT_SIZE = '12px'
 
         let diceSide = document.querySelector("#side");
 
         let randomNumber = () => Math.floor(Math.random()*DICE_SIDES) + 1;
-        let diceResult = 3;
-        
-        for(let i = 1; i <= 3; i++){
-            let newRow = document.createElement("div");
-            newRow.id = `row-${i}`;
-            newRow.classList = 'd-flex';
 
-            for(let j = 1; j <= 3; j ++){
-                let newCol = document.createElement("div");
-                newCol.id = `col-${j}`;
+        let diceResult = randomNumber();
 
-                newCol.style.width = DOT_SIZE;
-                newCol.style.height = DOT_SIZE;
+        /*
+        *   Esta funcion genera una grilla de 9x9 divs para incorporar los puntos del dado
+        *   el formato de las filas y columnas es #row-1 #col-2
+        * */
+        const renderGrid = () => {
+            for(let i = 1; i <= 3; i++){
 
-                newCol.style.border = '1px solid black';
+                let newRow = document.createElement("div");
+                newRow.id = `row-${i}`;
+                newRow.classList = 'd-flex';
 
+                for(let j = 1; j <= 3; j ++){
 
-                newCol.innerText = `${i} ${j}`;
+                    let newCol = document.createElement("div");
+                    newCol.id = `col-${j}`;
 
-                newRow.appendChild(newCol);
-                
+                    newCol.style.width = DOT_SIZE;
+                    newCol.style.height = DOT_SIZE;
+
+                    newCol.classList = 'd-flex flex-column m-2'
+                    newRow.appendChild(newCol);
+                    
+                }
+                diceSide.appendChild(newRow);
             }
-            diceSide.appendChild(newRow);
+        };
+        
+
+        let randomResults = [];
+
+        switch(diceResult){
+            case 1:
+                randomResults = resultOne;
+                break;
+            case 2:
+                randomResults = resultTwo;
+                break;
+            case 3:
+                randomResults = resultThree;
+                break;
+            case 4:
+                randomResults = resultFour;
+                break;
+            case 5:
+                randomResults = resultFive;
+                break;
+            case 6:
+                randomResults = resultSix;
+                break;
+            
+            default:
+                randomResults = resultOne;
+                break;
         }
 
-        const resultThree = [ ['row-1','col-3'], ['row-2', 'col-2'], ['row-3', 'col-1'] ]
+        renderGrid();
 
-        resultThree.forEach(coordenate => {
-            let position = document.querySelector("#" + coordenate[0] + '#' + coordenate[1])
-            position.appendChild()
+        randomResults.forEach(coordenate => {
+            console.log(coordenate)
+            let position = document.querySelector(coordenate);
 
             let dotElement = document.createElement("span");
 
@@ -73,7 +107,7 @@
             dotElement.style.backgroundColor = 'black';
             dotElement.style.borderRadius = '50%'
 
-            diceSide.appendChild(dotElement);
+            position.appendChild(dotElement);
             
         })
 
